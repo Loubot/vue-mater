@@ -19,7 +19,7 @@
                         <md-table-head class="center">Email</md-table-head>
                     </md-table-row>
 
-                    <md-table-row v-for="contact in contacts">
+                    <md-table-row v-for="contact in contacts" :key="contact.firstname">
                         <md-table-cell>{{contact.firstname}}</md-table-cell>
                         <md-table-cell>{{contact.lastname}}</md-table-cell>
                         <md-table-cell>{{contact.email}}</md-table-cell>
