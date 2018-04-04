@@ -12,8 +12,8 @@ var fs = require( 'fs' )
 /* Include all express controllers */
 fs.readdirSync('./controllers').forEach(function (file) {
     if(file.substr(-3) == '.js') {
-        route = require('./controllers/' + file);
-        route.controller( app, strategy );
+        var route = require('./controllers/' + file);
+        route.controller( app );
         // route.controller( app, jwt, strategy );
     }
 })
