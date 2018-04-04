@@ -5,15 +5,29 @@ var path      = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(__filename);
 var env       = process.env.NODE_ENV || 'development';
-var config    = require(__dirname + '/..\config\config.json')[env];
+// var config    = require(__dirname + '/..\config\config.json')[env];
 var db        = {};
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+// if (config.use_env_variable) {
+//   var sequelize = new Sequelize(process.env[config.use_env_variable], config);
+// } else {
+//   var sequelize = new Sequelize('vue', 'loubot', 'pass');
+// }
+const sequelize = new Sequelize('vue', 'loubot', 'pass', {
+  host: 'localhost',
+  dialect: 'mysql',
 
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  },
+
+
+  // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
+  operatorsAliases: false
+});
 fs
   .readdirSync(__dirname)
   .filter(file => {
