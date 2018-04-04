@@ -5,19 +5,18 @@ var path      = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(__filename);
 var env       = process.env.NODE_ENV || 'development';
-// var config    = require(__dirname + '/..\config\config.json')[env];
+var config    = require( '../config/config.json' )
 var db        = {};
 
 var sequelize = {}
 
-if ( true === false ) {
-    console.log('hup')
+
+if ( process.env.NODE_ENV === 'production' ) {
     sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-    console.log('hup')
-    sequelize = new Sequelize('vue', 'loubot', 'pass', {
-        host: 'localhost',
-        dialect: 'mysql',
+    sequelize = new Sequelize( config.development.database, config.development.username, config.development.password, {
+        host: config.development.host,
+        dialect: config.development.dialect,
 
         pool: {
             max: 5,
