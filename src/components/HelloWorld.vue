@@ -8,7 +8,7 @@
 
             <md-card-content>
               
-              <md-button class="md-raised md-primary" v-on:click="fillTable()">Fill table</md-button>
+              <md-button class="md-raised md-primary" v-on:click="getIt()">Fill table</md-button>
               <md-button class="md-raised md-primary" v-on:click="clearTable()">Clear table</md-button>
               <br />
 
@@ -34,24 +34,35 @@
 </template>
 
 <script>
-export default {
-    name: 'HelloWorld',
-    data: function () {
-      return {
-        contacts: []
-      }
-    },
-    methods: {
-      fillTable: function() {
-        this.contacts.push({firstname: 'Sebastian', lastname: 'Eschweiler', email: 's.eschweiler@mail.com'});
-        this.contacts.push({firstname: 'Bill', lastname: 'Smith', email: 'b.smith@mail.com'});
-        this.contacts.push({firstname: 'Ann', lastname: 'Parker', email: 'a.parker@mail.com'});
-      },
-      clearTable: function() {
-        this.contacts.splice(0, this.contacts.length);  
-      }
+    import axios from 'axios';
+
+    export default {
+        name: 'HelloWorld',
+        data: function () {
+          return {
+            contacts: []
+          }
+        },
+        methods: {
+            getIt : function() {
+                axios.get( 'http://localhost:5000/api/user' ).then( res  =>
+                {
+                    console.log( res )
+                }).catch( e => {
+                    console.log( e )
+                })
+            },
+
+          fillTable: function() {
+            this.contacts.push({firstname: 'Sebastian', lastname: 'Eschweiler', email: 's.eschweiler@mail.com'});
+            this.contacts.push({firstname: 'Bill', lastname: 'Smith', email: 'b.smith@mail.com'});
+            this.contacts.push({firstname: 'Ann', lastname: 'Parker', email: 'a.parker@mail.com'});
+          },
+          clearTable: function() {
+            this.contacts.splice(0, this.contacts.length);  
+          }
+        }
     }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
