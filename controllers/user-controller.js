@@ -8,7 +8,7 @@ module.exports.controller = function( app ) {
 		console.log( 'user controller /api/user' )
 
 		models.User.findOne({ where: { first_name: 'Loubot' } } ).then( user => {
-			console.log( user )
+			console.log( user.id )
 			res.json( user )
 		})
 		
