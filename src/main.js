@@ -4,8 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import { loadProgressBar } from 'axios-progress-bar'
+ 
+loadProgressBar()
+
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
+import './assets/css/style.css'
+import 'axios-progress-bar/dist/nprogress.css'
 
 Vue.use(VueMaterial)
 

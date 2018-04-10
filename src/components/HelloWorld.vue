@@ -1,36 +1,5 @@
 <template>
-    <div id="app">
-        <md-card>
-            <md-card-header>
-              <div class="md-title">Material Design with Vue.js 2 Demo</div>
-              <div class="md-subhead">by CodingTheSmartWay.com</div>
-            </md-card-header>
-
-            <md-card-content>
-              
-              <md-button class="md-raised md-primary" v-on:click="getIt()">Fill table</md-button>
-              <md-button class="md-raised md-primary" v-on:click="clearTable()">Clear table</md-button>
-              <br />
-
-                <md-table>
-                    <md-table-row >
-                        <md-table-head class="center">First name</md-table-head>
-                        <md-table-head class="center">Last name</md-table-head>
-                        <md-table-head class="center">Email</md-table-head>
-                    </md-table-row>
-
-                    <md-table-row v-for="contact in contacts" :key="contact.firstname">
-                        <md-table-cell>{{contact.firstname}}</md-table-cell>
-                        <md-table-cell>{{contact.lastname}}</md-table-cell>
-                        <md-table-cell>{{contact.email}}</md-table-cell>
-                    </md-table-row>
-                </md-table> 
-
-               
-            </md-card-content>
-        </md-card>
-
-    </div>
+    
 </template>
 
 <script>
@@ -40,20 +9,12 @@
         name: 'HelloWorld',
         data: function () {
           return {
-            contacts: []
+            contacts: [],
+            
           }
         },
         methods: {
-            getIt : function() {
-                axios.get( 'http://localhost:5000/api/user', 
-                    { crossdomain: true },
-                ).then( res  =>
-                {
-                    console.log( res )
-                }).catch( e => {
-                    console.log( e )
-                })
-            },
+            
 
           fillTable: function() {
             this.contacts.push({firstname: 'Sebastian', lastname: 'Eschweiler', email: 's.eschweiler@mail.com'});
@@ -87,4 +48,21 @@ a {
 .center{
     text-align: center !important;
 }
+
+.page-container {
+    min-height: 300px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(#000, .12);
+  }
+
+   // Demo purposes only
+  .md-drawer {
+    width: 230px;
+    max-width: calc(100vw - 125px);
+  }
+
+  .md-content {
+    padding: 16px;
+  }
 </style>

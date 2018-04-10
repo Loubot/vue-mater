@@ -11,12 +11,14 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "axios-progress-bar": "^1.1.8",
     "express": "^4.16.3",
     "mysql2": "^1.5.3",
     "sequelize": "^4.37.5",
     "sequelize-cli": "^4.0.0",
     "vue": "^2.5.2",
     "vue-material": "^1.0.0-beta-8",
+    "vue-progress-path": "0.0.2",
     "vue-resource": "^1.5.0",
     "vue-router": "^3.0.1"
   },
