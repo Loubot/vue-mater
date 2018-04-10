@@ -45,7 +45,9 @@
         },
         methods: {
             getIt : function() {
-                axios.get( 'http://localhost:5000/api/user' ).then( res  =>
+                axios.get( 'http://localhost:5000/api/user', 
+                    { crossdomain: true },
+                ).then( res  =>
                 {
                     console.log( res )
                 }).catch( e => {

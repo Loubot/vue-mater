@@ -2,7 +2,7 @@
   "development": {
     "username": "loubot",
     "password": "pass",
-    "database": "portfolio",
+    "database": "vue",
     "host": "localhost",
     "dialect": "mysql"
   },
