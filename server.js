@@ -20,11 +20,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// app.use(function(req, res, next) {
-//   	res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
-//   	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//   	next();
-// });
+app.use(function(req, res, next) {
+  	res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+  	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  	next();
+});
 /* Include all express controllers */
 fs.readdirSync('./controllers').forEach(function (file) {
     if(file.substr(-3) == '.js') {
