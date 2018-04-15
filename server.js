@@ -9,6 +9,13 @@ var models = require('./models')
 var fs = require( 'fs' )
 
 
+// Initialise passport
+var passport = require("passport");
+app.use( passport.initialize() )
+var strategy = require('./config/strategy')( passport )
+
+
+
 app.use(function(req, res, next) {
   	res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
   	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -18,7 +25,7 @@ app.use(function(req, res, next) {
 fs.readdirSync('./controllers').forEach(function (file) {
     if(file.substr(-3) == '.js') {
         var route = require('./controllers/' + file);
-        route.controller( app );
+        route.controller( app, strategy );
         // route.controller( app, jwt, strategy );
     }
 })

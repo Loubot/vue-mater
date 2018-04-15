@@ -3,11 +3,11 @@
 var models = require( '../models' )
 
 
-module.exports.controller = function( app ) {
-	app.get( '/api/user', function( req, res ) {
+module.exports.controller = function( app, strategy ) {
+	app.get( '/api/user', strategy.authenticate(), function( req, res ) {
 		console.log( 'user controller /api/user' )
 
-		models.User.findOne({ where: { first_name: 'Loubot' } } ).then( user => {
+		models.User.findOne({ where: { id: '1' } } ).then( user => {
 			console.log( user.id )
 			res.json( user )
 		})
