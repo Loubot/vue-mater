@@ -12,7 +12,8 @@ var sequelize = {}
 
 
 if ( process.env.NODE_ENV === 'production' ) {
-    sequelize = new Sequelize(process.env[config.use_env_variable], config);
+    console.log("production set")
+    var sequelize = new Sequelize(config.production.database, config.production.username, config.production.password, config.production);
 } else {
     sequelize = new Sequelize( config.development.database, config.development.username, config.development.password, {
         host: config.development.host,
