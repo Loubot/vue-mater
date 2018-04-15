@@ -7,8 +7,8 @@ var db = {}
 var app = express();
 var models = require('./models')
 var fs = require( 'fs' )
-var bodyParser = require('body-parser')
-var cookieParser = require('cookie-parser')
+// var bodyParser = require('body-parser')
+// var cookieParser = require('cookie-parser')
 
 
 // Initialise passport
