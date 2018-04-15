@@ -12,9 +12,9 @@ var fs = require( 'fs' )
 
 
 // Initialise passport
-var passport = require("passport");
-app.use( passport.initialize() )
-var strategy = require('./config/strategy')( passport )
+// var passport = require("passport");
+// app.use( passport.initialize() )
+// var strategy = require('./config/strategy')( passport )
 
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
