@@ -16,9 +16,9 @@ var passport = require("passport");
 app.use( passport.initialize() )
 var strategy = require('./config/strategy')( passport )
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(cookieParser());
 
 app.use(function(req, res, next) {
   	res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
