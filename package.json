@@ -12,7 +12,11 @@
   "dependencies": {
     "axios": "^0.18.0",
     "axios-progress-bar": "^1.1.8",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "credential": "^2.0.0",
     "express": "^4.16.3",
+    "jwt-simple": "^0.5.1",
     "mysql2": "^1.5.3",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
@@ -22,7 +26,8 @@
     "vue-material": "^1.0.0-beta-8",
     "vue-progress-path": "0.0.2",
     "vue-resource": "^1.5.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "winston": "^2.4.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
