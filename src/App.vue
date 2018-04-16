@@ -38,10 +38,7 @@
 
               <md-list-item>
                 <md-icon>error</md-icon>
-                <md-button class="md-icon-button" @click="showNavigation = false">
-                    <span class="md-list-item-text" >Spam</span>
-                </md-button>
-                
+                <span class="md-list-item-text pointer" @click="showNavigation = false">Hide menu</span>                
               </md-list-item>
             </md-list>
 
