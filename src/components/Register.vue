@@ -19,6 +19,10 @@
 
                     </div>
                 </md-card-content>
+
+                <md-card-actions>
+                        <md-button type="submit" class="md-primary" :disabled="sending">Create user</md-button>
+                </md-card-actions>
             </md-card>
         </form>
     </div>

@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import 'vue-material/dist/theme/default.css' // This line here
 import Vuelidate from 'vuelidate'
 Vue.use(Vuelidate)
 
