@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
+
 import { loadProgressBar } from 'axios-progress-bar'
  
 loadProgressBar()
