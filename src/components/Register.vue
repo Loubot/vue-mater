@@ -9,14 +9,23 @@
                 <md-card-content>
                     <div class="md-layout md-gutter">
                         <div class="md-layout-item md-small-size-100">
-                            <md-field :class="getValidationClass('firstName')">
-                                <label for="first-name">First Name</label>
-                                <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" />
-                                <span class="md-error" v-if="!$v.form.firstName.required">The first name is required</span>
-                                <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span>
+                            <md-field :class="getValidationClass('email')">
+                                <label for="email">Email</label>
+                                <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email" :disabled="sending" />
+                                <span class="md-error" v-if="!$v.form.email.required">The email is required</span>
+                                <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
                             </md-field>
                         </div>
 
+                    </div>
+
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field :class="getValidationClass('lastName')">
+                            <label for="password">Password</label>
+                            <md-input type="password" name="password" id="password" autocomplete="password" v-model="form.password" :disabled="sending" />
+                            <span class="md-error" v-if="!$v.form.password.required">Password is required</span>
+                            <span class="md-error" v-else-if="!$v.form.password.minlength">Invalid password</span>
+                        </md-field>
                     </div>
                 </md-card-content>
 
@@ -29,10 +38,12 @@
 </template>
 
 <script>
+    import axios from 'axios';
   import { validationMixin } from 'vuelidate'
   import {
     required,
     email,
+    password,
     minLength,
     maxLength
   } from 'vuelidate/lib/validators'
@@ -47,6 +58,7 @@
         gender: null,
         age: null,
         email: null,
+        password,
       },
       userSaved: false,
       sending: false,
@@ -54,21 +66,10 @@
     }),
     validations: {
       form: {
-        firstName: {
-          required,
-          minLength: minLength(3)
+        password: {
+            required
         },
-        lastName: {
-          required,
-          minLength: minLength(3)
-        },
-        age: {
-          required,
-          maxLength: maxLength(3)
-        },
-        gender: {
-          required
-        },
+        
         email: {
           required,
           email
@@ -94,15 +95,16 @@
         this.form.email = null
       },
       saveUser () {
+        console.log( 'hup' )
         this.sending = true
-
-        // Instead of this timeout, here you can call your API
-        window.setTimeout(() => {
-          this.lastUser = `${this.form.firstName} ${this.form.lastName}`
-          this.userSaved = true
-          this.sending = false
-          this.clearForm()
-        }, 1500)
+        axios.post( 'http://localhost:5000/register', {
+            email: this.form.email,
+            password: this.form.password
+        }).then( function( res ) {
+            console.log( res )
+        }).catch( function( err ) {
+            console.log( err )
+        })
       },
       validateUser () {
         this.$v.$touch()

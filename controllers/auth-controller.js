@@ -60,7 +60,7 @@ module.exports.controller = function( app, strategy ) {
 
 	app.post('/register', function( req, res ) {
 		console.log('register')
-		// console.log( req.body )
+		console.log( req.body )
 
 		pw.hash( req.body.password, function( err, hash ) {
 			if ( err ){
